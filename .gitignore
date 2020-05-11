@@ -1,0 +1,7 @@
+*pyc
+*/base_slovar
+*/build
+*/dist
+*.spec
+*.exe
+*.sav
