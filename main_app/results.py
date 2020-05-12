@@ -87,7 +87,7 @@ class Ui_Results(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Ramz_ild"))
         self.again.setText(_translate("Dialog", "Пройти тест еще раз"))
         self.results.setText(_translate("Dialog", "Ваш результат"))
         self.label.setText(_translate("Dialog", "Ваши ошибки:"))
