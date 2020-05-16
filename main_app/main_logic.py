@@ -6,47 +6,6 @@ from vnim import Ui_Vnim
 from results import Ui_Results
 import sys,pickle,random,os
 
-def Results():
-    global true,n
-    window = QtWidgets.QDialog()
-    ui = Ui_Results()
-    ui.setupUi(window)
-    def done():
-        global true,n
-        true = str(true)
-        n = str(n)
-        a = 'Ваш результат: '
-        b = ' правильных из '
-        c = '.'
-        d = a + true + b + n + c
-        ui.results.setText(d)
-        otvet = ''
-        for i in range(k):
-            m = str(verniy[i]) + ' -> ' + str(oshibki[i]) + '\n' 
-            otvet = otvet + m
-        ui.textEdit.setPlainText(otvet)
-        def main_menu():
-            window.close()
-            MainWindow.show()
-        def again_test():
-            window.close()
-            Question()
-        ui.main_menu.clicked.connect(main_menu)
-        ui.again.clicked.connect(again_test)
-    window.show()
-    done()
-    window.exec_()
-
-def Vnim():
-    window = QtWidgets.QDialog()
-    ui = Ui_Vnim()
-    ui.setupUi(window)
-    def okey():
-        window.close()
-    ui.ok.clicked.connect(okey)
-    window.show()
-    window.exec_()
-
 def Testing():
     global i,n,true,res,a,oshibki,verniy,k,res_a
     oshibki = []
@@ -99,6 +58,45 @@ def Testing():
     window.show()
     window.exec_()
 
+def Results():
+    global true,n
+    window = QtWidgets.QDialog()
+    ui = Ui_Results()
+    ui.setupUi(window)
+    def done():
+        global true,n
+        true = str(true)
+        n = str(n)
+        d = 'Ваш результат: ' + true + ' правильных из ' + n + '.'
+        ui.results.setText(d)
+        otvet = ''
+        for i in range(k):
+            m = str(verniy[i]) + ' -> ' + str(oshibki[i]) + '\n' 
+            otvet = otvet + m
+        ui.textEdit.setPlainText(otvet)
+        ui.textEdit.setReadOnly(True)
+        def main_menu():
+            window.close()
+            MainWindow.show()
+        def again_test():
+            window.close()
+            Question()
+        ui.main_menu.clicked.connect(main_menu)
+        ui.again.clicked.connect(again_test)
+    window.show()
+    done()
+    window.exec_()
+
+def Vnim():
+    window = QtWidgets.QDialog()
+    ui = Ui_Vnim()
+    ui.setupUi(window)
+    def okey():
+        window.close()
+    ui.ok.clicked.connect(okey)
+    window.show()
+    window.exec_()
+
 def Question():
     global n 
     window = QtWidgets.QDialog()
@@ -136,8 +134,7 @@ ui.setupUi(MainWindow)
 MainWindow.show()
 def check_slovar():
     try:
-        with open('data.sav','rb') as f:
-            slovar = pickle.load(f)
+        open('data.sav','rb')
         Question()
     except FileNotFoundError:
         Vnim()
