@@ -7,7 +7,8 @@ from results import Ui_Results
 import sys,pickle,random,os
 
 def Testing():
-    global i,n,true,res,a,oshibki,verniy,k,res_a
+    global i,n,true,res,a,oshibki,verniy,k,res_a,slova
+    slova = []
     oshibki = []
     verniy = []
     k = 0
@@ -23,9 +24,10 @@ def Testing():
     ui.digit.setText(str(i))
     res_a = a
     res = slovar[a]
+    #verniy.append(slo)
     del slovar[a]
     def check():
-        global res,true,i,a,n,oshibki,verniy,k,res_a
+        global res,true,i,a,n,oshibki,verniy,k,res_a,slova
         a = random.choice(list(slovar.keys()))
         ui.question.setText(a)
         g = ui.otvet.text()
@@ -35,7 +37,8 @@ def Testing():
             true+=1
         else:
             oshibki.append(g)
-            verniy.append(res_a)
+            slova.append(res_a)
+            verniy.append(res)
             k+=1
         res = slovar[a]
         res_a = a
@@ -71,8 +74,11 @@ def Results():
         ui.results.setText(d)
         otvet = ''
         for i in range(k):
-            m = str(verniy[i]) + ' -> ' + str(oshibki[i]) + '\n' 
+            m = str(slova[i] + ' -> ' + str(oshibki[i]) + ',а правильно:'+ str(verniy[i]) + '\n')
             otvet = otvet + m
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        ui.textEdit.setFont(font)
         ui.textEdit.setPlainText(otvet)
         ui.textEdit.setReadOnly(True)
         def main_menu():
