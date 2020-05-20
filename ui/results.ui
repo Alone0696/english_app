@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>547</width>
-    <height>445</height>
+    <width>733</width>
+    <height>477</height>
    </rect>
   </property>
   <property name="font">
@@ -28,8 +28,8 @@ background-color:#34495e;
   <widget class="QPushButton" name="again">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>220</y>
+     <x>50</x>
+     <y>370</y>
      <width>261</width>
      <height>91</height>
     </rect>
@@ -64,7 +64,7 @@ background-color:#2ecc71;
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>20</y>
+     <y>10</y>
      <width>201</width>
      <height>31</height>
     </rect>
@@ -86,7 +86,7 @@ color:white;
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>50</x>
      <y>70</y>
      <width>251</width>
      <height>31</height>
@@ -109,10 +109,10 @@ color:white;
   <widget class="QPushButton" name="main_menu">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>320</y>
-     <width>221</width>
-     <height>81</height>
+     <x>400</x>
+     <y>370</y>
+     <width>261</width>
+     <height>91</height>
     </rect>
    </property>
    <property name="font">
@@ -141,10 +141,10 @@ background-color:#2ecc71;
   <widget class="QTextEdit" name="textEdit">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>50</x>
      <y>110</y>
-     <width>431</width>
-     <height>101</height>
+     <width>611</width>
+     <height>251</height>
     </rect>
    </property>
    <property name="font">

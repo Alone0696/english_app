@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Results(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(547, 445)
+        Dialog.resize(733, 477)
         font = QtGui.QFont()
         font.setPointSize(12)
         Dialog.setFont(font)
@@ -14,7 +14,7 @@ class Ui_Results(object):
 "}\n"
 "")
         self.again = QtWidgets.QPushButton(Dialog)
-        self.again.setGeometry(QtCore.QRect(130, 220, 261, 91))
+        self.again.setGeometry(QtCore.QRect(50, 370, 261, 91))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.again.setFont(font)
@@ -32,7 +32,7 @@ class Ui_Results(object):
         self.again.setDefault(False)
         self.again.setObjectName("again")
         self.results = QtWidgets.QLabel(Dialog)
-        self.results.setGeometry(QtCore.QRect(110, 20, 500, 31))
+        self.results.setGeometry(QtCore.QRect(180, 10, 350, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.results.setFont(font)
@@ -41,7 +41,7 @@ class Ui_Results(object):
 "}")
         self.results.setObjectName("results")
         self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(180, 70, 251, 31))
+        self.label.setGeometry(QtCore.QRect(50, 70, 251, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label.setFont(font)
@@ -50,7 +50,7 @@ class Ui_Results(object):
 "}")
         self.label.setObjectName("label")
         self.main_menu = QtWidgets.QPushButton(Dialog)
-        self.main_menu.setGeometry(QtCore.QRect(150, 320, 221, 81))
+        self.main_menu.setGeometry(QtCore.QRect(400, 370, 261, 91))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.main_menu.setFont(font)
@@ -67,9 +67,9 @@ class Ui_Results(object):
 "}")
         self.main_menu.setObjectName("main_menu")
         self.textEdit = QtWidgets.QTextEdit(Dialog)
-        self.textEdit.setGeometry(QtCore.QRect(60, 110, 431, 101))
+        self.textEdit.setGeometry(QtCore.QRect(50, 110, 611, 251))
         font = QtGui.QFont()
-        font.setPointSize(15)
+        font.setPointSize(20)
         self.textEdit.setFont(font)
         self.textEdit.setStyleSheet("QTextEdit{\n"
 "background-color:none;\n"
