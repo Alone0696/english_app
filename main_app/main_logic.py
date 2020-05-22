@@ -24,7 +24,6 @@ def Testing():
     ui.digit.setText(str(i))
     res_a = a
     res = slovar[a]
-    #verniy.append(slo)
     del slovar[a]
     def check():
         global res,true,i,a,n,oshibki,verniy,k,res_a,slova
@@ -48,8 +47,8 @@ def Testing():
             global i,n
             if i == n+1:
                 window.close()
-                Results() 
-        i_check()   
+                Results()
+        i_check()
     def back():
         Question()
         window.close()
@@ -104,7 +103,7 @@ def Vnim():
     window.exec_()
 
 def Question():
-    global n 
+    global n
     window = QtWidgets.QDialog()
     ui = Ui_Question()
     ui.setupUi(window)

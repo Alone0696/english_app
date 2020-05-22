@@ -1,5 +1,4 @@
-import configparser
-import pickle
+import pickle,time
 def clear():
     print('Очистка словаря')
     print('Внимание,это действие полность очистить ваш словарь,вы хотите продолжить?')
@@ -43,7 +42,7 @@ def add():
     print('Добавления слова')
     print('(Если вы закончили свою работу,введите Конец,для возврата в главное меню')
     while True:
-        a = input('Введите слово,что бы его доавбить: ')
+        a = input('Введите слово,для добавления: ')
         if str(a.lower()) == const.lower():
             main()
         else:
@@ -57,7 +56,6 @@ def add():
                 print('Готово')
 
 def main():
-    print('Добро пожаловать в редактор словаря')
     print('Ваш текущий словарь:')
     for key in slovar:
         print(key,'->',slovar[key])
@@ -76,12 +74,23 @@ def main():
             clear()
         else:
             print('Я не знаю такую команду((.Попробуйте ещё раз')
-try:
-    with open('data.sav','rb') as f:
-        slovar = pickle.load(f)
-        main()
-except FileNotFoundError:
-    with open('data.sav','wb') as f:
-        slovar = {}
-        pickle.dump(slovar,f)
-    main()
+
+def hello():
+    print('Добро пожаловать в редактор словаря')
+    time.sleep(1)
+    print('Включаюсь...')
+    time.sleep(4.25)
+
+def start():
+    global slovar
+    hello()
+    try:
+        with open('data.sav','rb') as f:
+            slovar = pickle.load(f)
+            main()
+    except FileNotFoundError:
+        with open('data.sav','wb') as f:
+            slovar = {}
+            pickle.dump(slovar,f)
+            main()
+start()
