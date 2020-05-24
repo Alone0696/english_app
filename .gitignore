@@ -1,7 +1,6 @@
 *pyc
 */base_slovar
 */build
-*/dist
 *.spec
-*.exe
+*logic_data.exe
 *.sav
