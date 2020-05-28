@@ -55,7 +55,7 @@ class Ui_MainWindow(object):
 "border-style:solid;\n"
 "border-width: 2px;\n"
 "border-radius: 10px;\n"
-"border-color: #2ecc71;\n"
+"border-color: gray;\n"
 "color:white;\n"
 "}\n"
 "QPushButton:hover{\n"

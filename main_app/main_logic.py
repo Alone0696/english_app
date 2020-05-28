@@ -7,13 +7,10 @@ from results import Ui_Results
 import sys,pickle,random,os
 
 def Testing():
-    global i,n,true,res,a,oshibki,verniy,k,res_a,slova
-    slova = []
-    oshibki = []
-    verniy = []
-    k = 0
+    global i,n,true,a,oshibki,verniy,k,slova,res,res_a
+    slova,verniy,oshibki =[],[],[]
+    k,true = 0,0
     i = 1
-    true = 0
     window = QtWidgets.QDialog()
     ui = Ui_Testing()
     ui.setupUi(window)
@@ -26,7 +23,7 @@ def Testing():
     res = slovar[a]
     del slovar[a]
     def check():
-        global res,true,i,a,n,oshibki,verniy,k,res_a,slova
+        global true,i,oshibki,verniy,k,slova,res_a,res
         a = random.choice(list(slovar.keys()))
         ui.question.setText(a)
         g = ui.otvet.text()
@@ -35,7 +32,10 @@ def Testing():
         if res.lower() == g.lower():
             true+=1
         else:
-            oshibki.append(g)
+            if g == '':
+                oshibki.append('*Пустой ответ*')
+            else:
+                oshibki.append(g)
             slova.append(res_a)
             verniy.append(res)
             k+=1
@@ -43,12 +43,10 @@ def Testing():
         res_a = a
         del slovar[a]
         ui.otvet.setText('')
-        def i_check():
-            global i,n
-            if i == n+1:
-                window.close()
-                Results()
-        i_check()
+        if i == n+1:
+            window.close()
+            Results()
+    
     def back():
         Question()
         window.close()
@@ -76,7 +74,7 @@ def Results():
             m = str(slova[i] + ' -> ' + str(oshibki[i]) + ',а правильно:'+ str(verniy[i]) + '\n')
             otvet = otvet + m
         font = QtGui.QFont()
-        font.setPointSize(13)
+        font.setPointSize(15)
         ui.textEdit.setFont(font)
         ui.textEdit.setPlainText(otvet)
         ui.textEdit.setReadOnly(True)
@@ -144,7 +142,8 @@ def check_slovar():
     except FileNotFoundError:
         Vnim()
 def slovar():
-    os.startfile('logic_data.exe')
+    os.startfile("logic_data.exe")
 ui.settings.clicked.connect(slovar)
 ui.start.clicked.connect(check_slovar)
+ui.help.setEnabled(False)
 sys.exit(app.exec_())

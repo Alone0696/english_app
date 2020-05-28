@@ -34,7 +34,7 @@ class Ui_Results(object):
         self.results = QtWidgets.QLabel(Dialog)
         self.results.setGeometry(QtCore.QRect(180, 10, 350, 31))
         font = QtGui.QFont()
-        font.setPointSize(12)
+        font.setPointSize(15)
         self.results.setFont(font)
         self.results.setStyleSheet("QLabel{\n"
 "color:white;\n"
@@ -43,7 +43,7 @@ class Ui_Results(object):
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(50, 70, 251, 31))
         font = QtGui.QFont()
-        font.setPointSize(12)
+        font.setPointSize(15)
         self.label.setFont(font)
         self.label.setStyleSheet("QLabel{\n"
 "color:white;\n"
