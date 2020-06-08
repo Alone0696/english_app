@@ -4,6 +4,9 @@ from question import Ui_Question
 from testing import Ui_Testing
 from vnim import Ui_Vnim
 from results import Ui_Results
+from slovar import Ui_Slovar
+from add import Ui_Add
+from dell import Ui_Dell
 import sys,pickle,random,os
 
 def Testing():
@@ -48,8 +51,8 @@ def Testing():
             Results()
     
     def back():
-        Question()
         window.close()
+        Question()
     ui.pushButton.setAutoDefault(True)
     ui.pushButton.setDefault(True)
     ui.pushButton.setFocus(True)
@@ -73,9 +76,6 @@ def Results():
         for i in range(k):
             m = str(slova[i] + ' -> ' + str(oshibki[i]) + ',а правильно:'+ str(verniy[i]) + '\n')
             otvet = otvet + m
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        ui.textEdit.setFont(font)
         ui.textEdit.setPlainText(otvet)
         ui.textEdit.setReadOnly(True)
         def main_menu():
@@ -115,7 +115,9 @@ def Question():
         global n
         try:
             n = int(ui.question.text())
-            if n > len(slovar)-1:
+            if n <= 0:
+                ui.question.setText("Некорректно")
+            elif n > len(slovar)-1:
                 ui.question.setText("В словаре нет столько слов(")
             else:
                 window.close()
@@ -130,6 +132,80 @@ def Question():
     window.show()
     window.exec_()
 
+def slovar():
+    def main():
+        window  = QtWidgets.QDialog()
+        ui = Ui_Slovar()
+        ui.setupUi(window)
+        MainWindow.close()
+        with open('data.sav','rb') as f:
+            slovar = pickle.load(f)
+        def return_mainmenu():
+            window.close()
+            MainWindow.show()
+        def show_slovar():
+            d = ''
+            for key in slovar:
+                d+= str(key) + ' -> ' + str(slovar[key]) + '\n'
+            ui.window_s.setPlainText(d)
+        def add():
+            window = QtWidgets.QDialog()
+            ui = Ui_Add()
+            ui.setupUi(window)
+            def add_in():
+                a = ui.original.text()
+                b = ui.translate.text()
+                if a == '' or b == '':
+                    ui.original.setText('Пустой ввод')
+                else:
+                    slovar[a] = b
+                    with open('data.sav','wb') as f:
+                        pickle.dump(slovar,f)
+                    ui.status.setText('Успешно')
+                    ui.original.setText('')
+                    ui.translate.setText('')
+                    show_slovar()
+            ui.save.clicked.connect(add_in)
+            window.show()
+            window.exec_()
+        def dell():
+            window = QtWidgets.QDialog()
+            ui = Ui_Dell()
+            ui.setupUi(window)
+            def dell_in():
+                try:
+                    a = ui.slovo.text()
+                    slovar.pop(a)
+                    ui.status.setText('Успешно')
+                    with open('data.sav','wb') as f:
+                        pickle.dump(slovar,f)
+                    show_slovar()
+                    ui.slovo.setText('')
+                except KeyError:
+                    ui.slovo.setText('Неверно')
+            ui.dell.clicked.connect(dell_in)
+            window.show()
+            window.exec_()
+        window.show()
+        show_slovar()
+        ui.main_m.clicked.connect(return_mainmenu)
+        ui.add.clicked.connect(add)
+        ui.dell.clicked.connect(dell)
+        window.exec_()
+    def check_slovar_in():
+        global f
+        try:
+            open('data.sav','rb')
+            main()
+        except FileNotFoundError:
+            with open('data.sav','wb') as f:
+                slovar = {}
+                pickle.dump(slovar,f)
+                f.close()
+                main()
+    check_slovar_in()       
+
+
 app = QtWidgets.QApplication(sys.argv)
 MainWindow = QtWidgets.QMainWindow()
 ui = Ui_MainWindow()
@@ -141,8 +217,6 @@ def check_slovar():
         Question()
     except FileNotFoundError:
         Vnim()
-def slovar():
-    os.startfile("logic_data.exe")
 ui.settings.clicked.connect(slovar)
 ui.start.clicked.connect(check_slovar)
 ui.help.setEnabled(False)

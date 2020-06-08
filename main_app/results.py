@@ -32,7 +32,7 @@ class Ui_Results(object):
         self.again.setDefault(False)
         self.again.setObjectName("again")
         self.results = QtWidgets.QLabel(Dialog)
-        self.results.setGeometry(QtCore.QRect(180, 10, 350, 31))
+        self.results.setGeometry(QtCore.QRect(150, 10, 500, 31))
         font = QtGui.QFont()
         font.setPointSize(15)
         self.results.setFont(font)
@@ -69,7 +69,7 @@ class Ui_Results(object):
         self.textEdit = QtWidgets.QTextEdit(Dialog)
         self.textEdit.setGeometry(QtCore.QRect(50, 110, 611, 251))
         font = QtGui.QFont()
-        font.setPointSize(20)
+        font.setPointSize(15)
         self.textEdit.setFont(font)
         self.textEdit.setStyleSheet("QTextEdit{\n"
 "background-color:none;\n"
