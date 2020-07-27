@@ -80,6 +80,7 @@ class Ui_Results(object):
 "color:black;\n"
 "}\n"
 "")
+        self.textEdit.setReadOnly(True)
         self.textEdit.setObjectName("textEdit")
 
         self.retranslateUi(Dialog)

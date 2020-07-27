@@ -10,9 +10,9 @@ from dell import Ui_Dell
 import sys,pickle,random,os
 
 def Testing():
-    global i,n,true,a,oshibki,verniy,k,slova,res,res_a
+    global i,n,true,a,oshibki,verniy,k,slova,res,res_a,false
     slova,verniy,oshibki =[],[],[]
-    k,true = 0,0
+    k,true,false= 0,0,0
     i = 1
     window = QtWidgets.QDialog()
     ui = Ui_Testing()
@@ -26,7 +26,7 @@ def Testing():
     res = slovar[a]
     del slovar[a]
     def check():
-        global true,i,oshibki,verniy,k,slova,res_a,res
+        global true,i,oshibki,verniy,k,slova,res_a,res,false
         a = random.choice(list(slovar.keys()))
         ui.question.setText(a)
         g = ui.otvet.text()
@@ -37,8 +37,10 @@ def Testing():
         else:
             if g == '':
                 oshibki.append('*Пустой ответ*')
+                false+=1
             else:
                 oshibki.append(g)
+                false+=1
             slova.append(res_a)
             verniy.append(res)
             k+=1
@@ -62,7 +64,7 @@ def Testing():
     window.exec_()
 
 def Results():
-    global true,n
+    global true,n,false
     window = QtWidgets.QDialog()
     ui = Ui_Results()
     ui.setupUi(window)
@@ -73,11 +75,13 @@ def Results():
         d = 'Ваш результат: ' + true + ' правильных из ' + n + '.'
         ui.results.setText(d)
         otvet = ''
-        for i in range(k):
-            m = str(slova[i] + ' -> ' + str(oshibki[i]) + ',а правильно:'+ str(verniy[i]) + '\n')
-            otvet = otvet + m
-        ui.textEdit.setPlainText(otvet)
-        ui.textEdit.setReadOnly(True)
+        if false == 0:
+            ui.textEdit.setPlainText('Ошибок нет!Ты молодец)')
+        else:
+            for i in range(k):
+                m = str(slova[i] + ' -> ' +'вы написали ' + str(oshibki[i]) + ',а правильно:'+ str(verniy[i]) + '\n')
+                otvet = otvet + m
+            ui.textEdit.setPlainText(otvet)
         def main_menu():
             window.close()
             MainWindow.show()
@@ -132,7 +136,7 @@ def Question():
     window.show()
     window.exec_()
 
-def slovar():
+def Slovar():
     def main():
         window  = QtWidgets.QDialog()
         ui = Ui_Slovar()
@@ -156,7 +160,7 @@ def slovar():
                 a = ui.original.text()
                 b = ui.translate.text()
                 if a == '' or b == '':
-                    ui.original.setText('Пустой ввод')
+                    ui.status.setText('Пустой ввод')
                 else:
                     slovar[a] = b
                     with open('data.sav','wb') as f:
@@ -217,7 +221,7 @@ def check_slovar():
         Question()
     except FileNotFoundError:
         Vnim()
-ui.settings.clicked.connect(slovar)
+ui.settings.clicked.connect(Slovar)
 ui.start.clicked.connect(check_slovar)
 ui.help.setEnabled(False)
 sys.exit(app.exec_())

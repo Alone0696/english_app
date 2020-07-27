@@ -14,6 +14,7 @@ class Ui_Slovar(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.window_s.setFont(font)
+        self.window_s.setReadOnly(True)
         self.window_s.setStyleSheet("QTextEdit{\n"
 "background-color:none;\n"
 "border-style:solid;\n"
