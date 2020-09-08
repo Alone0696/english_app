@@ -1,6 +1,7 @@
 *pyc
 */base_slovar
 */build
+*__pycache__
 *.spec
 *.sav
 *.bat

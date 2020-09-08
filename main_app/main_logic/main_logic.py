@@ -1,3 +1,5 @@
+import sys,pickle,random,os
+from googletrans import Translator
 from PyQt5 import QtCore, QtGui, QtWidgets
 from main_menu import Ui_MainWindow
 from question import Ui_Question
@@ -7,7 +9,6 @@ from results import Ui_Results
 from slovar import Ui_Slovar
 from add import Ui_Add
 from dell import Ui_Dell
-import sys,pickle,random,os
 
 def Testing():
     global i,n,true,a,oshibki,verniy,k,slova,res,res_a,false
@@ -159,10 +160,12 @@ def Slovar():
             def add_in():
                 a = ui.original.text()
                 b = ui.translate.text()
-                if a == '' or b == '':
+                if a == '' and b == '':
                     ui.status.setText('Пустой ввод')
-                else:
-                    slovar[a] = b
+                elif a != '' and b == '':
+                    tr = Translator()
+                    rs = tr.translate(f'{a}',src='en',dest='ru')
+                    slovar[a] = rs.text
                     with open('data.sav','wb') as f:
                         pickle.dump(slovar,f)
                     ui.status.setText('Успешно')

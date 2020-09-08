@@ -35,7 +35,7 @@ class Ui_Add(object):
         self.original = QtWidgets.QLineEdit(Dialog)
         self.original.setGeometry(QtCore.QRect(20, 70, 161, 61))
         font = QtGui.QFont()
-        font.setPointSize(16)
+        font.setPointSize(14)
         self.original.setFont(font)
         self.original.setStyleSheet("QLineEdit{\n"
 "background-color:none;\n"
@@ -51,7 +51,7 @@ class Ui_Add(object):
         self.translate = QtWidgets.QLineEdit(Dialog)
         self.translate.setGeometry(QtCore.QRect(250, 70, 161, 61))
         font = QtGui.QFont()
-        font.setPointSize(16)
+        font.setPointSize(14)
         self.translate.setFont(font)
         self.translate.setStyleSheet("QLineEdit{\n"
 "background-color:none;\n"
@@ -62,6 +62,7 @@ class Ui_Add(object):
 "color:black;\n"
 "}\n"
 "")
+        self.translate.setPlaceholderText('Необязательно')
         self.translate.setObjectName("translate")
         self.status = QtWidgets.QLabel(Dialog)
         self.status.setGeometry(QtCore.QRect(420, 20, 121, 21))
