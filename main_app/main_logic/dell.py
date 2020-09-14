@@ -45,7 +45,7 @@ class Ui_Dell(object):
         self.slovo_l.setGeometry(QtCore.QRect(70, 20, 141, 31))
         self.slovo_l.setObjectName("slovo_l")
         self.status = QtWidgets.QLabel(Dialog)
-        self.status.setGeometry(QtCore.QRect(250, 160, 141, 31))
+        self.status.setGeometry(QtCore.QRect(250, 30, 141, 31))
         self.status.setStyleSheet("QLabel{color:white;}")
         font.setPointSize(12)
         self.status.setFont(font)

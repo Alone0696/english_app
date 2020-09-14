@@ -9,6 +9,7 @@ from results import Ui_Results
 from slovar import Ui_Slovar
 from add import Ui_Add
 from dell import Ui_Dell
+from help import Ui_Help
 
 def Testing():
     global i,n,true,a,oshibki,verniy,k,slova,res,res_a,false
@@ -162,10 +163,18 @@ def Slovar():
                 b = ui.translate.text()
                 if a == '' and b == '':
                     ui.status.setText('Пустой ввод')
-                elif a != '' and b == '':
+                elif b=='':
                     tr = Translator()
                     rs = tr.translate(f'{a}',src='en',dest='ru')
                     slovar[a] = rs.text
+                    with open('data.sav','wb') as f:
+                        pickle.dump(slovar,f)
+                    ui.status.setText('Успешно')
+                    ui.original.setText('')
+                    ui.translate.setText('')
+                    show_slovar()
+                elif b !='':
+                    slovar[a]=b
                     with open('data.sav','wb') as f:
                         pickle.dump(slovar,f)
                     ui.status.setText('Успешно')
@@ -212,6 +221,13 @@ def Slovar():
                 main()
     check_slovar_in()       
 
+def Help():
+    window = QtWidgets.QDialog()
+    ui = Ui_Help()
+    ui.setupUi(window)
+    window.show()
+    window.exec_()
+
 
 app = QtWidgets.QApplication(sys.argv)
 MainWindow = QtWidgets.QMainWindow()
@@ -226,5 +242,6 @@ def check_slovar():
         Vnim()
 ui.settings.clicked.connect(Slovar)
 ui.start.clicked.connect(check_slovar)
-ui.help.setEnabled(False)
+ui.help.setDisabled(True)
+#ui.help.clicked.connect(Help)
 sys.exit(app.exec_())

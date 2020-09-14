@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Add(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(562, 168)
+        Dialog.resize(561, 203)
         Dialog.setStyleSheet("QDialog{\n"
 "background-color:#34495e;\n"
 "}\n"
@@ -35,7 +35,7 @@ class Ui_Add(object):
         self.original = QtWidgets.QLineEdit(Dialog)
         self.original.setGeometry(QtCore.QRect(20, 70, 161, 61))
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(16)
         self.original.setFont(font)
         self.original.setStyleSheet("QLineEdit{\n"
 "background-color:none;\n"
@@ -51,7 +51,7 @@ class Ui_Add(object):
         self.translate = QtWidgets.QLineEdit(Dialog)
         self.translate.setGeometry(QtCore.QRect(250, 70, 161, 61))
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(16)
         self.translate.setFont(font)
         self.translate.setStyleSheet("QLineEdit{\n"
 "background-color:none;\n"
@@ -62,7 +62,6 @@ class Ui_Add(object):
 "color:black;\n"
 "}\n"
 "")
-        self.translate.setPlaceholderText('Необязательно')
         self.translate.setObjectName("translate")
         self.status = QtWidgets.QLabel(Dialog)
         self.status.setGeometry(QtCore.QRect(420, 20, 121, 21))
@@ -71,16 +70,35 @@ class Ui_Add(object):
         self.status.setFont(font)
         self.status.setStyleSheet("QLabel{color:white;}")
         self.status.setObjectName("status")
-
+        self.checkBox = QtWidgets.QCheckBox(Dialog)
+        self.checkBox.setGeometry(QtCore.QRect(260, 150, 161, 20))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.checkBox.setFont(font)
+        self.checkBox.setStyleSheet("QCheckBox{\n"
+"color:white;\n"
+"}") 
+        self.checkBox.setChecked(True)
+        self.checkBox.setDisabled(True)
+        self.checkBox.setObjectName("checkBox")
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Ramz_ild"))
+        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.save.setText(_translate("Dialog", "Добавить"))
         self.original_l.setText(_translate("Dialog", "<html><head/><body><p><span style=\" font-size:12pt; color:#ffffff;\">Английское значение</span></p></body></html>"))
         self.translate_l.setText(_translate("Dialog", "<html><head/><body><p><span style=\" font-size:12pt; color:#ffffff;\">Перевод</span></p></body></html>"))
-        self.status.setText(_translate("Dialog", ""))
+        self.status.setText(_translate("Dialog", "<html><head/><body><p><span style=\" color:#ffffff;\"></span></p></body></html>"))
+        self.checkBox.setText(_translate("Dialog", "Auto Translate"))
 
 
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Add()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())

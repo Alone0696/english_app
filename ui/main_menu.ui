@@ -25,7 +25,6 @@
    <property name="styleSheet">
     <string notr="true">QWidget{
 background-color:#34495e;
-
 }
 </string>
    </property>
@@ -40,6 +39,7 @@ background-color:#34495e;
     </property>
     <property name="font">
      <font>
+      <family>MS Shell Dlg 2</family>
       <pointsize>12</pointsize>
      </font>
     </property>
@@ -72,6 +72,7 @@ background-color:#2ecc71;
     </property>
     <property name="font">
      <font>
+      <family>MS Shell Dlg 2</family>
       <pointsize>12</pointsize>
      </font>
     </property>
@@ -103,6 +104,7 @@ background-color:#2ecc71;
     </property>
     <property name="font">
      <font>
+      <family>MS Shell Dlg 2</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -134,6 +136,7 @@ background-color:#2ecc71;
     </property>
     <property name="font">
      <font>
+      <family>MS Shell Dlg 2</family>
       <pointsize>15</pointsize>
      </font>
     </property>
