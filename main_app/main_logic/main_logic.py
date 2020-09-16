@@ -10,8 +10,63 @@ from slovar import Ui_Slovar
 from add import Ui_Add
 from dell import Ui_Dell
 from help import Ui_Help
+from slovar_prog import Ui_Slovar_prog
 
-def Testing():
+def Testing_prog_slovar():
+    global i,n,true,a,oshibki,verniy,k,slova,res,res_a,false
+    slova,verniy,oshibki =[],[],[]
+    k,true,false= 0,0,0
+    i = 1
+    window = QtWidgets.QDialog()
+    ui = Ui_Testing()
+    ui.setupUi(window)
+    with open('big_data.sav','rb') as f:
+        big_slovar = pickle.load(f)
+    a = random.choice(list(big_slovar.keys()))
+    ui.question.setText(a)
+    ui.digit.setText(str(i))
+    res_a = a
+    res = big_slovar[a]
+    del big_slovar[a]
+    def check():
+        global true,i,oshibki,verniy,k,slova,res_a,res,false
+        a = random.choice(list(big_slovar.keys()))
+        ui.question.setText(a)
+        g = ui.otvet.text()
+        i+=1
+        ui.digit.setText(str(i))
+        if res.lower() == g.lower():
+            true+=1
+        else:
+            if g == '':
+                oshibki.append('*Пустой ответ*')
+                false+=1
+            else:
+                oshibki.append(g)
+                false+=1
+            slova.append(res_a)
+            verniy.append(res)
+            k+=1
+        res = big_slovar[a]
+        res_a = a
+        del big_slovar[a]
+        ui.otvet.setText('')
+        if i == n+1:
+            window.close()
+            Results()
+    
+    def back():
+        window.close()
+        Question()
+    ui.pushButton.setAutoDefault(True)
+    ui.pushButton.setDefault(True)
+    ui.pushButton.setFocus(True)
+    ui.pushButton.clicked.connect(check)
+    ui.stop.clicked.connect(back)
+    window.show()
+    window.exec_()
+
+def Testing_polz_slovar():
     global i,n,true,a,oshibki,verniy,k,slova,res,res_a,false
     slova,verniy,oshibki =[],[],[]
     k,true,false= 0,0,0
@@ -113,6 +168,8 @@ def Question():
     ui.setupUi(window)
     with open('data.sav','rb') as f:
         slovar = pickle.load(f)
+    with open('big_data.sav','rb') as h:
+        big_slovar = pickle.load(h)
     MainWindow.close()
     def back():
         window.close()
@@ -123,11 +180,18 @@ def Question():
             n = int(ui.question.text())
             if n <= 0:
                 ui.question.setText("Некорректно")
-            elif n > len(slovar)-1:
-                ui.question.setText("В словаре нет столько слов(")
-            else:
-                window.close()
-                Testing()
+            elif ui.comboBox.currentText() == 'Свой словарь':
+                if n > len(slovar)-1:
+                    ui.question.setText("В словаре нет столько слов(")
+                else:
+                    window.close()
+                    Testing_polz_slovar()
+            elif ui.comboBox.currentText() == 'Словарь программы':
+                if n > len(big_slovar)-1:
+                    ui.question.setText("В словаре нет столько слов(")
+                else:
+                    window.close()
+                    Testing_prog_slovar()
         except ValueError:
             ui.question.setText('Неверно')
     ui.back.clicked.connect(back)
@@ -140,14 +204,28 @@ def Question():
 
 def Slovar():
     def main():
-        window  = QtWidgets.QDialog()
+        window_sl  = QtWidgets.QDialog()
         ui = Ui_Slovar()
-        ui.setupUi(window)
+        ui.setupUi(window_sl)
         MainWindow.close()
         with open('data.sav','rb') as f:
             slovar = pickle.load(f)
+        with open('big_data.sav','rb') as h:
+            big_slovar = pickle.load(h)
+        def show_prog_slovar():
+            window = QtWidgets.QDialog()
+            ui = Ui_Slovar_prog()
+            ui.setupUi(window)
+            def show_in():
+                d = ''
+                for key in big_slovar:
+                    d+= str(key) + ' -> ' + str(big_slovar[key]) + '\n'
+                ui.window_s.setPlainText(d)
+            show_in()
+            window.show()
+            window.exec_()
         def return_mainmenu():
-            window.close()
+            window_sl.close()
             MainWindow.show()
         def show_slovar():
             d = ''
@@ -202,12 +280,13 @@ def Slovar():
             ui.dell.clicked.connect(dell_in)
             window.show()
             window.exec_()
-        window.show()
+        window_sl.show()
         show_slovar()
         ui.main_m.clicked.connect(return_mainmenu)
         ui.add.clicked.connect(add)
         ui.dell.clicked.connect(dell)
-        window.exec_()
+        ui.dell_2.clicked.connect(show_prog_slovar)
+        window_sl.exec_()
     def check_slovar_in():
         global f
         try:

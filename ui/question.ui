@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>431</width>
-    <height>322</height>
+    <width>432</width>
+    <height>381</height>
    </rect>
   </property>
   <property name="font">
@@ -29,7 +29,7 @@ background-color:#34495e;
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>170</y>
+     <y>200</y>
      <width>191</width>
      <height>61</height>
     </rect>
@@ -81,7 +81,7 @@ background-color:#2ecc71;
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>80</y>
+     <y>70</y>
      <width>191</width>
      <height>61</height>
     </rect>
@@ -109,7 +109,7 @@ border-color:#2ecc71;
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>240</y>
+     <y>280</y>
      <width>131</width>
      <height>71</height>
     </rect>
@@ -136,6 +136,36 @@ background-color:#2ecc71;
    <property name="text">
     <string>Назад</string>
    </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>140</y>
+     <width>211</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox{
+background-color:none;
+}</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>Свой словарь</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Словарь программы</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

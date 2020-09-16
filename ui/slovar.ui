@@ -145,6 +145,37 @@ background-color:#2ecc71;
     <string>Добавить</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="del_2">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>280</y>
+     <width>171</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+background-color:none;
+border-style:solid;
+border-width: 2px;
+border-radius: 10px;
+border-color: #2ecc71;
+color:white;
+}
+QPushButton:hover{
+background-color:#2ecc71;
+}</string>
+   </property>
+   <property name="text">
+    <string>Словарь программы </string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

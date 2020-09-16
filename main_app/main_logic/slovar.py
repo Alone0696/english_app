@@ -14,7 +14,6 @@ class Ui_Slovar(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.window_s.setFont(font)
-        self.window_s.setReadOnly(True)
         self.window_s.setStyleSheet("QTextEdit{\n"
 "background-color:none;\n"
 "border-style:solid;\n"
@@ -24,6 +23,7 @@ class Ui_Slovar(object):
 "color:black;\n"
 "}\n"
 "")
+        self.window_s.setReadOnly(True)
         self.window_s.setObjectName("window_s")
         self.dell = QtWidgets.QPushButton(Dialog)
         self.dell.setGeometry(QtCore.QRect(220, 280, 171, 71))
@@ -76,6 +76,23 @@ class Ui_Slovar(object):
 "background-color:#2ecc71;\n"
 "}")
         self.add.setObjectName("add")
+        self.dell_2 = QtWidgets.QPushButton(Dialog)
+        self.dell_2.setGeometry(QtCore.QRect(410, 280, 171, 71))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.dell_2.setFont(font)
+        self.dell_2.setStyleSheet("QPushButton{\n"
+"background-color:none;\n"
+"border-style:solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"border-color: #2ecc71;\n"
+"color:white;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color:#2ecc71;\n"
+"}")
+        self.dell_2.setObjectName("dell_2")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -91,5 +108,14 @@ class Ui_Slovar(object):
         self.dell.setText(_translate("Dialog", "Удалить"))
         self.main_m.setText(_translate("Dialog", "В главное меню"))
         self.add.setText(_translate("Dialog", "Добавить"))
+        self.dell_2.setText(_translate("Dialog", "Словарь программы "))
 
 
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Slovar()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())

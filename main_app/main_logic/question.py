@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Question(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(431, 322)
+        Dialog.resize(432, 381)
         font = QtGui.QFont()
         font.setPointSize(12)
         Dialog.setFont(font)
@@ -14,7 +14,7 @@ class Ui_Question(object):
 "}\n"
 "")
         self.start = QtWidgets.QPushButton(Dialog)
-        self.start.setGeometry(QtCore.QRect(110, 170, 191, 61))
+        self.start.setGeometry(QtCore.QRect(110, 200, 191, 61))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.start.setFont(font)
@@ -39,7 +39,7 @@ class Ui_Question(object):
         self.name.setFont(font)
         self.name.setObjectName("name")
         self.question = QtWidgets.QLineEdit(Dialog)
-        self.question.setGeometry(QtCore.QRect(110, 80, 191, 61))
+        self.question.setGeometry(QtCore.QRect(110, 70, 191, 61))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.question.setFont(font)
@@ -54,10 +54,9 @@ class Ui_Question(object):
 "QLineEdit:hover{\n"
 "border-color:#2ecc71;\n"
 "}")
-        self.question.setText('')
         self.question.setObjectName("question")
         self.back = QtWidgets.QPushButton(Dialog)
-        self.back.setGeometry(QtCore.QRect(140, 240, 131, 71))
+        self.back.setGeometry(QtCore.QRect(140, 280, 131, 71))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.back.setFont(font)
@@ -73,6 +72,17 @@ class Ui_Question(object):
 "background-color:#2ecc71;\n"
 "}")
         self.back.setObjectName("back")
+        self.comboBox = QtWidgets.QComboBox(Dialog)
+        self.comboBox.setGeometry(QtCore.QRect(100, 140, 211, 51))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.comboBox.setFont(font)
+        self.comboBox.setStyleSheet("QComboBox{\n"
+"background-color:none;\n"
+"}")
+        self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -83,6 +93,8 @@ class Ui_Question(object):
         self.start.setText(_translate("Dialog", "Старт"))
         self.name.setText(_translate("Dialog", "<html><head/><body><p><span style=\" color:#ffffff;\">Сколько слов вы желаете повторить?</span></p></body></html>"))
         self.back.setText(_translate("Dialog", "Назад"))
+        self.comboBox.setItemText(0, _translate("Dialog", "Свой словарь"))
+        self.comboBox.setItemText(1, _translate("Dialog", "Словарь программы"))
 
 
 if __name__ == "__main__":
